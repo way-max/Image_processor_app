@@ -8,6 +8,8 @@ import os
 from PIL import Image
 import shutil
 
+upload_progress = {}
+
 app = FastAPI(title="Image Uploader, Resizer with Progress")
 router = APIRouter(prefix="/api", tags=["Image Uploader, Resizer and Progress Monitor"])
 

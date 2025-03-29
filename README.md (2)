@@ -1,5 +1,4 @@
 
-
 ## 📞 **Contact**  
 - **Author**: James Akandu  
 - **Email**: zurumdev@gmail.com  
@@ -34,7 +33,7 @@ Whether you're designing logos, managing notifications, or processing images in 
 - **Built with SSE**: Receive real-time updates without refreshing, so you’re always in the loop.
 
 ### 3. **Image Processing API**  
-- **Super-Fast Image Resizing**: Upload and resize images without losing quality. Example, image of size 4MB can be reduced to 95% of its original size (e.g., 4mb to 40kB) in less than 4 seconds!  
+- **Super-Fast Image Resizing**: Upload and resize images without losing quality—your image is reduced from 4MB to 95% of its original size (e.g., 40KB) in less than 5 seconds!  
 - **Real-Time Progress**: Know exactly when your image is ready with live progress tracking powered by SSE.
 
 ---
@@ -49,7 +48,6 @@ Whether you're designing logos, managing notifications, or processing images in 
 - **Async Programming**: **asyncio** ensures a responsive, non-blocking experience throughout the app  
 
 ---
-
 
 ## 🚀 **Installation**  
 
@@ -85,4 +83,3 @@ Dive into the app and experience the magic of logo creation and real-time image 
 ---
 
 Get ready to unlock your creativity with the **Image Processor App**—whether you’re designing, processing, or engaging, everything is fast, smooth, and real-time. Start exploring today!
-
