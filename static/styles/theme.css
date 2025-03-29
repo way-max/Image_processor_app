@@ -1,0 +1,68 @@
+
+
+/* Dark mode styles using media query */
+@media (prefers-color-scheme: dark) {
+  * {
+    background-color: black !important;
+    color: #e0e0e0 !important;
+    border-color: #333333 !important;
+  }
+
+  a, button {
+    color: white !important;
+    border-radius: 10px !important;
+    padding: 8px !important;
+    border: none !important;
+    background-color: green !important;
+  }
+
+  i {
+    background: none !important;
+  }
+
+  header, footer {
+    background-color: #333333 !important;
+  }
+
+  input, select, textarea {
+    background-color: #444444 !important;
+    color: #e0e0e0 !important;
+    border-color: green !important;
+  }
+
+	input:focus, select:focus, textarea:focus, input[type="number"]:focus {
+	    border-colo: #007bff !important;
+	    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5) !important;
+	}
+}
+
+/* Light mode styles using media query */
+@media (prefers-color-scheme: light) {
+  * {
+    background-color: white !important;
+    color: black !important;
+    border-color: #cccccc !important;
+  }
+
+  a, button {
+    color: white !important;
+    border-radius: 10px !important;
+    padding: 8px !important;
+    border: none !important;
+    background-color: green !important;
+  }
+
+  header, footer {
+    background-color: #f5f5f5 !important;
+  }
+
+  input, select, textarea {
+    background-color: #f7f7f7 !important;
+    color: #333333 !important;
+    border-color: green !important;
+  }
+input:focus, select:focus, textarea:focus, input[type="number"]:focus {
+    border-colo: #007bff !important;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5) !important;
+}
+}
