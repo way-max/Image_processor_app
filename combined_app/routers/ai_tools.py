@@ -17,7 +17,7 @@ router = APIRouter(tags=["Logo Maker with AI"])
 # Request model for generating logos
 class LogoPrompt(BaseModel):
     prompt: str  # Prompt for generating the color palette
-    logo_name: str  # Name to display on the logo
+    country_name: str  # Name to display on the logo
 
 # Function to generate a color palette using OpenAI
 async def generate_palette(prompt: str):
@@ -64,11 +64,11 @@ async def generate_palette(prompt: str):
 @router.post("/generate-logo/")
 async def generate_logo(request: LogoPrompt):
     """
-    Generates a logo based on the provided prompt and logo name.
+    Generates a country flag logo based on the provided prompt and country name.
 
     Request Body:
         prompt (str): A description or theme for the logo's color palette.
-        logo_name (str): The name to display on the logo.
+        country_name (str): The country name to display on the logo.
 
     Returns:
         StreamingResponse: The generated logo image as a PNG file.
@@ -105,7 +105,7 @@ async def generate_logo(request: LogoPrompt):
 
         # Add the logo name text centered on the image
         font = ImageFont.load_default()  # Use default font
-        text = request.logo_name
+        text = request.country_name
 
         # Calculate text size and position
         text_bbox = draw.textbbox((0, 0), text, font=font)
