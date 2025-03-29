@@ -7,3 +7,4 @@ sse_starlette
 ddtrace
 python-multipart
 httpx
+openai
