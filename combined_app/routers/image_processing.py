@@ -106,3 +106,25 @@ async def progress(client_id: str):
     return StreamingResponse(event_stream(), media_type="text/event-stream")
 
 
+
+from fastapi import FastAPI, Request, HTTPException
+from fastapi.responses import StreamingResponse
+import httpx
+
+async def video_streamer(url: str):
+    # Stream video from the source URL
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url, stream=True)
+        if response.status_code != 200:
+            raise HTTPException(status_code=response.status_code, detail="Error fetching video")
+        async for chunk in response.aiter_bytes(chunk_size=1024 * 1024):
+            yield chunk
+
+@router.get("/stream-video")
+async def stream_video(request: Request, url: str):
+    # Check if the URL parameter is provided
+    if not url:
+        raise HTTPException(status_code=400, detail="Video URL is required")
+
+    # Stream the video
+    return StreamingResponse(video_streamer(url), media_type="video/mp4")
