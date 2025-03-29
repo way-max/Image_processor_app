@@ -53,7 +53,7 @@ async def upload_image(file: UploadFile, client_id: str, width: int, height: int
         return StreamingResponse(resized_image, media_type="image/jpeg")
 
 
-
+'''
 async def process_upload(file_data: bytes, client_id: str, width: int, height: int) -> io.BytesIO:
     """
     Simulates image processing, updates progress, and resizes the image.
@@ -88,6 +88,53 @@ async def process_upload(file_data: bytes, client_id: str, width: int, height: i
         upload_progress[client_id] = -1  # Indicate failure
         print(f"Image upload failed for client_id: {client_id}. Error: {e}")
         raise HTTPException(status_code=500, detail=f"Error processing image: {e}")
+'''
+
+
+
+
+import shutil
+async def process_upload(file_data: bytes, client_id: str, width: int, height: int) -> io.BytesIO:
+    """
+    Simulates image processing, updates progress, and resizes the image.
+    """
+    try:
+        total_steps = 10  # Simulated steps
+        for step in range(1, total_steps + 1):
+            await asyncio.sleep(0.5)  # Simulate delay for processing
+            upload_progress[client_id] = (step / total_steps) * 100  # Update progress
+
+        # Save the image
+        image = Image.open(io.BytesIO(file_data))
+        output_dir = "uploaded_images"
+        os.makedirs(output_dir, exist_ok=True)  # Ensure the directory exists
+        file_path = f"{output_dir}/{client_id}_uploaded_image.png"
+        image.save(file_path)  # Save with a client-specific name
+
+        upload_progress[client_id] = 100  # Ensure progress reaches 100%
+        print(f"Image upload and processing completed for client_id: {client_id}")
+
+        # Resize the image
+        image = image.convert("RGB") if image.mode == "RGBA" else image
+        resized_image = image.resize((width, height))
+
+        # Save resized image to memory buffer
+        output = io.BytesIO()
+        resized_image.save(output, format="JPEG")
+        output.seek(0)
+
+        # Remove the 'uploaded_images' directory
+        shutil.rmtree(output_dir, ignore_errors=True)
+        print(f"Removed directory: {output_dir}")
+
+        return output
+    except Exception as e:
+        upload_progress[client_id] = -1  # Indicate failure
+        print(f"Image upload failed for client_id: {client_id}. Error: {e}")
+        raise HTTPException(status_code=500, detail=f"Error processing image: {e}")
+
+
+
 
 
 @router.get("/progress/{client_id}")
