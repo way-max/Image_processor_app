@@ -3,8 +3,8 @@
 ## 📞 **Contact**  
 - **Author**: James Akandu  
 - **Email**: zurumdev@gmail.com  
-- **GitHub**: [Your GitHub Profile](https://github.com/way-max)  
-- **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/zurum)
+- **GitHub**: [GitHub Profile](https://github.com/way-max)  
+- **LinkedIn**: [LinkedIn Profile](https://linkedin.com/in/zurum)
 
 ---
 
